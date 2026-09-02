@@ -1,0 +1,672 @@
+[
+  {
+    "vendor_id": "VND001",
+    "vendor_name": "Maheesh Karunaratne",
+    "food_type": "Hoppers & Roti (Aappa & Pol Roti)",
+    "products": [
+      {
+        "product_id": "PROD0101",
+        "product_name": "Plain Hopper",
+        "price": 40.0,
+        "product_type": "Hoppers"
+      },
+      {
+        "product_id": "PROD0102",
+        "product_name": "Egg Hopper",
+        "price": 90.0,
+        "product_type": "Hoppers"
+      },
+      {
+        "product_id": "PROD0103",
+        "product_name": "Milk Hopper (Kiri Aappa)",
+        "price": 70.0,
+        "product_type": "Hoppers"
+      },
+      {
+        "product_id": "PROD0104",
+        "product_name": "Sweet Hopper (Pani Aappa)",
+        "price": 60.0,
+        "product_type": "Hoppers"
+      },
+      {
+        "product_id": "PROD0105",
+        "product_name": "Pol Roti (Coconut Roti)",
+        "price": 50.0,
+        "product_type": "Roti"
+      },
+      {
+        "product_id": "PROD0106",
+        "product_name": "Pol Roti with Lunu Miris",
+        "price": 80.0,
+        "product_type": "Roti"
+      },
+      {
+        "product_id": "PROD0107",
+        "product_name": "Cheese Roti",
+        "price": 120.0,
+        "product_type": "Roti"
+      },
+      {
+        "product_id": "PROD0108",
+        "product_name": "Onion Roti (Lunu Roti)",
+        "price": 60.0,
+        "product_type": "Roti"
+      },
+      {
+        "product_id": "PROD0109",
+        "product_name": "Stuffed Beef Roti",
+        "price": 180.0,
+        "product_type": "Roti"
+      },
+      {
+        "product_id": "PROD0110",
+        "product_name": "Stuffed Vegetable Roti",
+        "price": 110.0,
+        "product_type": "Roti"
+      }
+    ]
+  },
+  {
+    "vendor_id": "VND002",
+    "vendor_name": "Tharushi Munasinghe",
+    "food_type": "String Hoppers (Idiyappam)",
+    "products": [
+      {
+        "product_id": "PROD0201",
+        "product_name": "Red String Hoppers (10 pcs)",
+        "price": 100.0,
+        "product_type": "String Hoppers"
+      },
+      {
+        "product_id": "PROD0202",
+        "product_name": "White String Hoppers (10 pcs)",
+        "price": 90.0,
+        "product_type": "String Hoppers"
+      },
+      {
+        "product_id": "PROD0203",
+        "product_name": "Kiri Hodi (Coconut Milk Gravy)",
+        "price": 50.0,
+        "product_type": "Curry"
+      },
+      {
+        "product_id": "PROD0204",
+        "product_name": "Pol Sambol (Coconut Scrape)",
+        "price": 60.0,
+        "product_type": "Sambol"
+      },
+      {
+        "product_id": "PROD0205",
+        "product_name": "Seeni Sambol (Caramelized Onion)",
+        "price": 80.0,
+        "product_type": "Sambol"
+      },
+      {
+        "product_id": "PROD0206",
+        "product_name": "String Hopper Kottu (Veg)",
+        "price": 300.0,
+        "product_type": "Kottu"
+      },
+      {
+        "product_id": "PROD0207",
+        "product_name": "String Hopper Kottu (Chicken)",
+        "price": 450.0,
+        "product_type": "Kottu"
+      },
+      {
+        "product_id": "PROD0208",
+        "product_name": "String Hopper Kottu (Egg)",
+        "price": 350.0,
+        "product_type": "Kottu"
+      },
+      {
+        "product_id": "PROD0209",
+        "product_name": "Fish Curry Sauce",
+        "price": 120.0,
+        "product_type": "Curry"
+      },
+      {
+        "product_id": "PROD0210",
+        "product_name": "Potato White Curry",
+        "price": 90.0,
+        "product_type": "Curry"
+      }
+    ]
+  },
+  {
+    "vendor_id": "VND003",
+    "vendor_name": "Nilmini Silva",
+    "food_type": "Kottu Roti",
+    "products": [
+      {
+        "product_id": "PROD0301",
+        "product_name": "Vegetable Kottu",
+        "price": 280.0,
+        "product_type": "Kottu"
+      },
+      {
+        "product_id": "PROD0302",
+        "product_name": "Egg Kottu",
+        "price": 350.0,
+        "product_type": "Kottu"
+      },
+      {
+        "product_id": "PROD0303",
+        "product_name": "Chicken Kottu",
+        "price": 480.0,
+        "product_type": "Kottu"
+      },
+      {
+        "product_id": "PROD0304",
+        "product_name": "Cheese & Chicken Kottu",
+        "price": 580.0,
+        "product_type": "Kottu"
+      },
+      {
+        "product_id": "PROD0305",
+        "product_name": "Beef Kottu",
+        "price": 520.0,
+        "product_type": "Kottu"
+      },
+      {
+        "product_id": "PROD0306",
+        "product_name": "Mutton Kottu",
+        "price": 750.0,
+        "product_type": "Kottu"
+      },
+      {
+        "product_id": "PROD0307",
+        "product_name": "Seafood Kottu",
+        "price": 650.0,
+        "product_type": "Kottu"
+      },
+      {
+        "product_id": "PROD0308",
+        "product_name": "Palandi Kottu (Yogurt Base)",
+        "price": 500.0,
+        "product_type": "Kottu"
+      },
+      {
+        "product_id": "PROD0309",
+        "product_name": "Dolphin Kottu (Chunky Roti)",
+        "price": 460.0,
+        "product_type": "Kottu"
+      },
+      {
+        "product_id": "PROD0310",
+        "product_name": "Masala Kottu",
+        "price": 420.0,
+        "product_type": "Kottu"
+      }
+    ]
+  },
+  {
+    "vendor_id": "VND004",
+    "vendor_name": "Pathum Amarasinghe",
+    "food_type": "Rice and Curry (Bath & Curry)",
+    "products": [
+      {
+        "product_id": "PROD0401",
+        "product_name": "Standard Red Rice & Curry (Veg)",
+        "price": 250.0,
+        "product_type": "Rice"
+      },
+      {
+        "product_id": "PROD0402",
+        "product_name": "White Rice & Fish Curry (Ambul Thiyal)",
+        "price": 380.0,
+        "product_type": "Rice"
+      },
+      {
+        "product_id": "PROD0403",
+        "product_name": "Chicken Rice and Curry",
+        "price": 420.0,
+        "product_type": "Rice"
+      },
+      {
+        "product_id": "PROD0404",
+        "product_name": "Beef Rice and Curry",
+        "price": 450.0,
+        "product_type": "Rice"
+      },
+      {
+        "product_id": "PROD0405",
+        "product_name": "Pork Black Curry Rice",
+        "price": 480.0,
+        "product_type": "Rice"
+      },
+      {
+        "product_id": "PROD0406",
+        "product_name": "Mutton Rice and Curry",
+        "price": 700.0,
+        "product_type": "Rice"
+      },
+      {
+        "product_id": "PROD0407",
+        "product_name": "Dhal Curry (Parippu)",
+        "price": 100.0,
+        "product_type": "Curry"
+      },
+      {
+        "product_id": "PROD0408",
+        "product_name": "Polos Curry (Baby Jackfruit)",
+        "price": 120.0,
+        "product_type": "Curry"
+      },
+      {
+        "product_id": "PROD0409",
+        "product_name": "Wambatu Moju (Eggplant Pickle)",
+        "price": 150.0,
+        "product_type": "Pickle"
+      },
+      {
+        "product_id": "PROD0410",
+        "product_name": "Gotukola Sambol (Centella Salad)",
+        "price": 80.0,
+        "product_type": "Sambol"
+      }
+    ]
+  },
+  {
+    "vendor_id": "VND005",
+    "vendor_name": "Piyumi Weerasinghe",
+    "food_type": "Pittu & Kiribath (Traditional Staples)",
+    "products": [
+      {
+        "product_id": "PROD0501",
+        "product_name": "White Rice Pittu",
+        "price": 150.0,
+        "product_type": "Pittu"
+      },
+      {
+        "product_id": "PROD0502",
+        "product_name": "Red Kurakkan Pittu (Ragi)",
+        "price": 180.0,
+        "product_type": "Pittu"
+      },
+      {
+        "product_id": "PROD0503",
+        "product_name": "Coconut Pittu",
+        "price": 160.0,
+        "product_type": "Pittu"
+      },
+      {
+        "product_id": "PROD0504",
+        "product_name": "Kiribath (Milk Rice - 4 pcs)",
+        "price": 160.0,
+        "product_type": "Kiribath"
+      },
+      {
+        "product_id": "PROD0505",
+        "product_name": "Kiribath with Lunu Miris",
+        "price": 200.0,
+        "product_type": "Kiribath"
+      },
+      {
+        "product_id": "PROD0506",
+        "product_name": "Kiribath with Imbul (Sweet)",
+        "price": 220.0,
+        "product_type": "Kiribath"
+      },
+      {
+        "product_id": "PROD0507",
+        "product_name": "Lunu Miris (Chili Paste)",
+        "price": 50.0,
+        "product_type": "Sambol"
+      },
+      {
+        "product_id": "PROD0508",
+        "product_name": "Kata Sambol",
+        "price": 60.0,
+        "product_type": "Sambol"
+      },
+      {
+        "product_id": "PROD0509",
+        "product_name": "Tripe Curry (Babat)",
+        "price": 250.0,
+        "product_type": "Curry"
+      },
+      {
+        "product_id": "PROD0510",
+        "product_name": "Chicken Red Curry",
+        "price": 200.0,
+        "product_type": "Curry"
+      }
+    ]
+  },
+  {
+    "vendor_id": "VND006",
+    "vendor_name": "Chathurika Sirisena",
+    "food_type": "Sri Lankan Seafood Specialties",
+    "products": [
+      {
+        "product_id": "PROD0601",
+        "product_name": "Jaffna Crab Curry",
+        "price": 1200.0,
+        "product_type": "Seafood"
+      },
+      {
+        "product_id": "PROD0602",
+        "product_name": "Negombo Prawn Curry",
+        "price": 850.0,
+        "product_type": "Seafood"
+      },
+      {
+        "product_id": "PROD0603",
+        "product_name": "Fish Ambul Thiyal (Sour Fish)",
+        "price": 300.0,
+        "product_type": "Seafood"
+      },
+      {
+        "product_id": "PROD0604",
+        "product_name": "Cuttlefish Devil (Balan Devils)",
+        "price": 650.0,
+        "product_type": "Seafood"
+      },
+      {
+        "product_id": "PROD0605",
+        "product_name": "Sprats Tempered (Haalmasso)",
+        "price": 200.0,
+        "product_type": "Seafood"
+      },
+      {
+        "product_id": "PROD0606",
+        "product_name": "Fish Cutlets (3 pcs)",
+        "price": 150.0,
+        "product_type": "Short Eats"
+      },
+      {
+        "product_id": "PROD0607",
+        "product_name": "Seafood Fried Rice",
+        "price": 550.0,
+        "product_type": "Rice"
+      },
+      {
+        "product_id": "PROD0608",
+        "product_name": "Hot Butter Sepia/Cuttlefish",
+        "price": 890.0,
+        "product_type": "Seafood"
+      },
+      {
+        "product_id": "PROD0609",
+        "product_name": "Crab Soup (Jaffna style)",
+        "price": 400.0,
+        "product_type": "Soup"
+      },
+      {
+        "product_id": "PROD0610",
+        "product_name": "Dry Fish Curry (Karawala)",
+        "price": 250.0,
+        "product_type": "Seafood"
+      }
+    ]
+  },
+  {
+    "vendor_id": "VND007",
+    "vendor_name": "Chathurika Bandara",
+    "food_type": "Traditional Short Eats",
+    "products": [
+      {
+        "product_id": "PROD0701",
+        "product_name": "Mutton Roll",
+        "price": 100.0,
+        "product_type": "Short Eats"
+      },
+      {
+        "product_id": "PROD0702",
+        "product_name": "Fish Roti (Triangular)",
+        "price": 80.0,
+        "product_type": "Short Eats"
+      },
+      {
+        "product_id": "PROD0703",
+        "product_name": "Egg Roti (Stuffed)",
+        "price": 100.0,
+        "product_type": "Short Eats"
+      },
+      {
+        "product_id": "PROD0704",
+        "product_name": "Vegetable Samosa",
+        "price": 60.0,
+        "product_type": "Short Eats"
+      },
+      {
+        "product_id": "PROD0705",
+        "product_name": "Ulundu Vadai",
+        "price": 50.0,
+        "product_type": "Short Eats"
+      },
+      {
+        "product_id": "PROD0706",
+        "product_name": "Masala Vadai",
+        "price": 50.0,
+        "product_type": "Short Eats"
+      },
+      {
+        "product_id": "PROD0707",
+        "product_name": "Chinese Roll (Fish)",
+        "price": 90.0,
+        "product_type": "Short Eats"
+      },
+      {
+        "product_id": "PROD0708",
+        "product_name": "Egg Patty",
+        "price": 70.0,
+        "product_type": "Short Eats"
+      },
+      {
+        "product_id": "PROD0709",
+        "product_name": "Polos Cutlet (Vegetarian)",
+        "price": 80.0,
+        "product_type": "Short Eats"
+      },
+      {
+        "product_id": "PROD0710",
+        "product_name": "Chicken Pastry",
+        "price": 110.0,
+        "product_type": "Short Eats"
+      }
+    ]
+  },
+  {
+    "vendor_id": "VND008",
+    "vendor_name": "Imesha Peiris",
+    "food_type": "Devilled & Tempered Dishes",
+    "products": [
+      {
+        "product_id": "PROD0801",
+        "product_name": "Devilled Chicken",
+        "price": 450.0,
+        "product_type": "Devilled"
+      },
+      {
+        "product_id": "PROD0802",
+        "product_name": "Devilled Beef",
+        "price": 500.0,
+        "product_type": "Devilled"
+      },
+      {
+        "product_id": "PROD0803",
+        "product_name": "Devilled Pork",
+        "price": 520.0,
+        "product_type": "Devilled"
+      },
+      {
+        "product_id": "PROD0804",
+        "product_name": "Tempered Potatoes (Ala Theldala)",
+        "price": 180.0,
+        "product_type": "Tempered"
+      },
+      {
+        "product_id": "PROD0805",
+        "product_name": "Tempered Chickpeas (Kadalay)",
+        "price": 120.0,
+        "product_type": "Tempered"
+      },
+      {
+        "product_id": "PROD0806",
+        "product_name": "Devilled Mushrooms",
+        "price": 280.0,
+        "product_type": "Devilled"
+      },
+      {
+        "product_id": "PROD0807",
+        "product_name": "Devilled Soya Meat",
+        "price": 200.0,
+        "product_type": "Devilled"
+      },
+      {
+        "product_id": "PROD0808",
+        "product_name": "Tempered Cashew Curry",
+        "price": 450.0,
+        "product_type": "Curry"
+      },
+      {
+        "product_id": "PROD0809",
+        "product_name": "Fried Fish (Balaya)",
+        "price": 250.0,
+        "product_type": "Seafood"
+      },
+      {
+        "product_id": "PROD0810",
+        "product_name": "Omelette (Sri Lankan style)",
+        "price": 100.0,
+        "product_type": "Egg"
+      }
+    ]
+  },
+  {
+    "vendor_id": "VND009",
+    "vendor_name": "Wanidu Jayawardene",
+    "food_type": "Traditional Sweets & Desserts",
+    "products": [
+      {
+        "product_id": "PROD0901",
+        "product_name": "Watalappan (Coconut Custard)",
+        "price": 150.0,
+        "product_type": "Dessert"
+      },
+      {
+        "product_id": "PROD0902",
+        "product_name": "Konda Kewum",
+        "price": 60.0,
+        "product_type": "Dessert"
+      },
+      {
+        "product_id": "PROD0903",
+        "product_name": "Kokis (3 pcs)",
+        "price": 80.0,
+        "product_type": "Dessert"
+      },
+      {
+        "product_id": "PROD0904",
+        "product_name": "Asmi",
+        "price": 120.0,
+        "product_type": "Dessert"
+      },
+      {
+        "product_id": "PROD0905",
+        "product_name": "Mung Kewum",
+        "price": 70.0,
+        "product_type": "Dessert"
+      },
+      {
+        "product_id": "PROD0906",
+        "product_name": "Aluwa (Rice Flour Sweet)",
+        "price": 60.0,
+        "product_type": "Dessert"
+      },
+      {
+        "product_id": "PROD0907",
+        "product_name": "Curd and Treacle (Kiri Peni)",
+        "price": 180.0,
+        "product_type": "Dessert"
+      },
+      {
+        "product_id": "PROD0908",
+        "product_name": "Caramel Pudding",
+        "price": 140.0,
+        "product_type": "Dessert"
+      },
+      {
+        "product_id": "PROD0909",
+        "product_name": "Thala Guli (Sesame Ball)",
+        "price": 40.0,
+        "product_type": "Dessert"
+      },
+      {
+        "product_id": "PROD0910",
+        "product_name": "Avocado Cream",
+        "price": 200.0,
+        "product_type": "Dessert"
+      }
+    ]
+  },
+  {
+    "vendor_id": "VND010",
+    "vendor_name": "Nilanthi Ranasinghe",
+    "food_type": "Sri Lankan Traditional Beverages",
+    "products": [
+      {
+        "product_id": "PROD1001",
+        "product_name": "King Coconut (Thambili)",
+        "price": 80.0,
+        "product_type": "Beverage"
+      },
+      {
+        "product_id": "PROD1002",
+        "product_name": "Faluda",
+        "price": 180.0,
+        "product_type": "Beverage"
+      },
+      {
+        "product_id": "PROD1003",
+        "product_name": "Ginger Tea",
+        "price": 60.0,
+        "product_type": "Beverage"
+      },
+      {
+        "product_id": "PROD1004",
+        "product_name": "Woodapple Juice",
+        "price": 150.0,
+        "product_type": "Beverage"
+      },
+      {
+        "product_id": "PROD1005",
+        "product_name": "Avocado Milkshake",
+        "price": 220.0,
+        "product_type": "Beverage"
+      },
+      {
+        "product_id": "PROD1006",
+        "product_name": "Lime Juice with Mint",
+        "price": 120.0,
+        "product_type": "Beverage"
+      },
+      {
+        "product_id": "PROD1007",
+        "product_name": "Milo Shake (Sri Lankan style)",
+        "price": 160.0,
+        "product_type": "Beverage"
+      },
+      {
+        "product_id": "PROD1008",
+        "product_name": "Plain Tea with Jaggery",
+        "price": 70.0,
+        "product_type": "Beverage"
+      },
+      {
+        "product_id": "PROD1009",
+        "product_name": "Ceylon Black Coffee",
+        "price": 90.0,
+        "product_type": "Beverage"
+      },
+      {
+        "product_id": "PROD1010",
+        "product_name": "Toddy-style Sweet Ginger Beer",
+        "price": 130.0,
+        "product_type": "Beverage"
+      }
+    ]
+  }
+]

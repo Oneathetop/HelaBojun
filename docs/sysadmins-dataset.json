@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "ADM001",
+    "name": "Sachith Perera",
+    "username": "admin_anura",
+    "password": "HadaPass_5506!",
+    "role": "System Administrator",
+    "email": "admin_anura@hadabima.lk"
+  },
+  {
+    "_id": "ADM002",
+    "name": "Tharushi Kumara",
+    "username": "admin_sanduni",
+    "password": "HadaPass_3286!",
+    "role": "System Administrator",
+    "email": "admin_sanduni@hadabima.lk"
+  },
+  {
+    "_id": "ADM003",
+    "name": "Roshen Sirisena",
+    "username": "admin_chamara",
+    "password": "HadaPass_7912!",
+    "role": "System Administrator",
+    "email": "admin_chamara@hadabima.lk"
+  },
+  {
+    "_id": "ADM004",
+    "name": "Dilhani Perera",
+    "username": "admin_dilhani",
+    "password": "HadaPass_2535!",
+    "role": "System Administrator",
+    "email": "admin_dilhani@hadabima.lk"
+  },
+  {
+    "_id": "ADM005",
+    "name": "Sunil Kumara",
+    "username": "admin_dinesh",
+    "password": "HadaPass_9279!",
+    "role": "System Administrator",
+    "email": "admin_dinesh@hadabima.lk"
+  }
+]
