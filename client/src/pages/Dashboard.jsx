@@ -1,12 +1,24 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+function getAttendancePieGradient(attendanceByCity, colors, totalAttendance) {
+    return attendanceByCity.reduce((segments, city, index) => {
+        const start = segments.offset;
+        const end = start + (city.attendance_count / totalAttendance) * 100;
+
+        segments.parts.push(`${colors[index % colors.length]} ${start}% ${end}%`);
+        segments.offset = end;
+        return segments;
+    }, { parts: [], offset: 0 }).parts.join(', ');
+}
+
 export default function Dashboard() {
     const navigate = useNavigate();
     const [revenueData, setRevenueData] = useState(null);
     const [segments, setSegments] = useState(null);
     const [attendanceByCity, setAttendanceByCity] = useState([]);
     const [geographic, setGeographic] = useState([]);
+    const [frequentPreferences, setFrequentPreferences] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const handleLogout = () => {
@@ -27,14 +39,15 @@ export default function Dashboard() {
             const headers = { Authorization: 'Bearer ' + token };
 
             try {
-                const [revRes, segRes, attendanceRes, geoRes] = await Promise.all([
+                const [revRes, segRes, attendanceRes, geoRes, preferencesRes] = await Promise.all([
                     fetch('http://localhost:5000/api/analytics/revenue', { headers }),
                     fetch('http://localhost:5000/api/analytics/segmentation', { headers }),
                     fetch('http://localhost:5000/api/analytics/attendance-by-city', { headers }),
-                    fetch('http://localhost:5000/api/analytics/geographic-insights', { headers })
+                    fetch('http://localhost:5000/api/analytics/geographic-insights', { headers }),
+                    fetch('http://localhost:5000/api/analytics/frequent-preferences', { headers })
                 ]);
 
-                if (revRes.status === 401 || segRes.status === 401 || attendanceRes.status === 401 || geoRes.status === 401) {
+                if ([revRes, segRes, attendanceRes, geoRes, preferencesRes].some((response) => response.status === 401)) {
                     localStorage.clear();
                     navigate('/login');
                     return;
@@ -44,11 +57,13 @@ export default function Dashboard() {
                 const segJson = await segRes.json();
                 const attendanceJson = await attendanceRes.json();
                 const geoJson = await geoRes.json();
+                const preferencesJson = await preferencesRes.json();
 
                 if (revJson.success) setRevenueData(revJson);
                 if (segJson.success) setSegments(segJson);
                 if (attendanceJson.success) setAttendanceByCity(attendanceJson.data);
                 if (geoJson.success) setGeographic(geoJson.data);
+                if (preferencesJson.success) setFrequentPreferences(preferencesJson.data);
 
                 setLoading(false);
             } catch (err) {
@@ -67,6 +82,8 @@ export default function Dashboard() {
         (left, right) => (right.top_items?.[0]?.quantity || 0) - (left.top_items?.[0]?.quantity || 0)
     );
     const highestFoodVolume = foodByVolume[0]?.top_items?.[0]?.quantity || 1;
+    const totalAttendance = attendanceByCity.reduce((total, city) => total + city.attendance_count, 0);
+    const pieColors = ['#047857', '#059669', '#34d399', '#f59e0b', '#f97316', '#dc2626', '#7c3aed', '#2563eb'];
 
     return (
         <div className="min-h-screen bg-stone-50 text-stone-800">
@@ -131,26 +148,37 @@ export default function Dashboard() {
                                 {attendanceByCity.reduce((total, city) => total + city.attendance_count, 0).toLocaleString()} visits
                             </span>
                         </div>
-                        <div className="attendance-list" aria-label="Attendance by city descending">
+                        <div className="attendance-pie-layout" aria-label="Attendance by city pie chart">
                             {attendanceByCity.length === 0 ? (
                                 <p className="text-sm text-stone-500">No attendance data available.</p>
-                            ) : attendanceByCity.map((city) => {
-                                const highestAttendance = attendanceByCity[0].attendance_count || 1;
-                                const barWidth = (city.attendance_count / highestAttendance) * 100;
-
-                                return (
-                                    <div className="attendance-row" key={city.city}>
-                                        <div className="attendance-row-label">
-                                            <span className="font-semibold text-stone-800">{city.city}</span>
-                                            <span className="font-bold text-emerald-700">{city.attendance_count.toLocaleString()}</span>
+                            ) : (
+                                <>
+                                    <div
+                                        className="attendance-pie"
+                                        style={{
+                                            background: `conic-gradient(${getAttendancePieGradient(attendanceByCity, pieColors, totalAttendance)})`
+                                        }}
+                                        role="img"
+                                        aria-label={`Attendance distribution across ${attendanceByCity.length} cities`}
+                                    >
+                                        <div className="attendance-pie-hole">
+                                            <strong>{totalAttendance.toLocaleString()}</strong>
+                                            <span>visits</span>
                                         </div>
-                                        <div className="attendance-track">
-                                            <div className="attendance-bar" style={{ width: `${barWidth}%` }} />
-                                        </div>
-                                        <span className="attendance-visitors">{city.unique_customers.toLocaleString()} visitors</span>
                                     </div>
-                                );
-                            })}
+                                    <div className="attendance-legend">
+                                        {attendanceByCity.map((city, index) => (
+                                            <div className="attendance-legend-row" key={city.city}>
+                                                <span className="attendance-legend-city">
+                                                    <i style={{ backgroundColor: pieColors[index % pieColors.length] }} />
+                                                    {city.city}
+                                                </span>
+                                                <strong>{city.attendance_count.toLocaleString()}</strong>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -192,17 +220,32 @@ export default function Dashboard() {
                         Frequent Customers ({'>='} 6 visits/month)
                     </h3>
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-                        {segments?.high_frequency_list.map((cust, i) => (
-                            <div key={i} className="flex items-center justify-between rounded border border-stone-100 bg-stone-50/50 p-4">
-                                <div>
-                                    <h4 className="font-bold text-stone-800">{cust._id.name}</h4>
-                                    <p className="text-xs text-stone-500">ID: {cust._id.customer_id}</p>
+                        {segments?.high_frequency_list.map((cust, i) => {
+                            const preferences = frequentPreferences.find((item) => item.customer_id === cust._id.customer_id);
+
+                            return (
+                            <div key={i} className="frequent-customer-card rounded border border-stone-100 bg-stone-50/50 p-4">
+                                <div className="flex items-center justify-between">
+                                    <div>
+                                        <h4 className="font-bold text-stone-800">{cust._id.name}</h4>
+                                        <p className="text-xs text-stone-500">ID: {cust._id.customer_id}</p>
+                                    </div>
+                                    <span className="rounded bg-emerald-100 text-emerald-800 px-2.5 py-1 text-xs font-extrabold">
+                                        {cust.avg_visits_per_month.toFixed(1)} visits/mo
+                                    </span>
                                 </div>
-                                <span className="rounded bg-emerald-100 text-emerald-800 px-2.5 py-1 text-xs font-extrabold">
-                                    {cust.avg_visits_per_month.toFixed(1)} visits/mo
-                                </span>
+                                <div className="frequent-items">
+                                    <p className="frequent-items-title">Food purchased</p>
+                                    {preferences?.top_preferences?.length ? preferences.top_preferences.map((item) => (
+                                        <div className="frequent-item-row" key={item.item}>
+                                            <span>{item.item}</span>
+                                            <strong>{item.quantity_bought.toLocaleString()} units</strong>
+                                        </div>
+                                    )) : <span className="text-xs text-stone-500">No purchases recorded</span>}
+                                </div>
                             </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </main>
