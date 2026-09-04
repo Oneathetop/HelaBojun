@@ -35,7 +35,7 @@ export default function Login() {
             <form onSubmit={handleLogin} className="login-panel w-96 rounded-lg bg-white p-8 shadow-md border-t-4 border-emerald-600">
                 <h2 className="mb-2 text-2xl font-bold text-stone-800">Hadabima NoSQL Admin</h2>
                 <p className="mb-6 text-sm text-stone-500">Sign in to review database analytics & insights</p>
-                {error && <div className="mb-4 text-sm text-red-600 bg-red-50 p-2 rounded">{error}</div>}
+                {error && <div className="login-error mb-4 text-sm text-red-600 bg-red-50 p-2 rounded">{error}</div>}
 
                 <div className="mb-4">
                     <label className="block text-xs font-bold uppercase text-stone-600">Username</label>

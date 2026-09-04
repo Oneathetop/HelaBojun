@@ -194,9 +194,13 @@
 body { margin: 0; min-width: 320px; }
 
 .login-page {
+  align-items: center;
   background: radial-gradient(circle at 12% 20%, #d1fae5 0, transparent 28%), linear-gradient(135deg, #ecfdf5, #f8faf9);
+  display: flex;
+  justify-content: center;
   min-height: 100vh;
   overflow: hidden;
+  padding: 32px 20px;
   position: relative;
 }
 
@@ -217,20 +221,73 @@ body { margin: 0; min-width: 320px; }
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,.8);
   border-radius: 18px;
+  border-top: 4px solid #059669;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   box-shadow: 0 24px 70px rgba(6, 78, 59, .14);
+  padding: 40px;
   position: relative;
   width: min(420px, calc(100vw - 40px));
   z-index: 1;
 }
-.login-panel h2 { letter-spacing: -.03em; }
+.login-panel h2 {
+  color: #1c2921;
+  font-size: 28px;
+  letter-spacing: -.03em;
+  line-height: 1.2;
+  margin: 0 0 10px;
+}
+.login-panel > p {
+  color: #66736b;
+  line-height: 1.55;
+  margin: 0 0 28px;
+}
+.login-error {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  border-radius: 8px;
+  color: #be123c;
+  margin-bottom: 20px;
+  padding: 11px 12px;
+}
+.login-panel > div.mb-4 { margin-bottom: 20px; }
+.login-panel label {
+  color: #34423a;
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
 .login-panel input {
   background: #f8fbf9;
+  border: 1px solid #d7e4dc;
   border-color: #d7e4dc;
+  border-radius: 9px;
+  color: #1c2921;
+  font: inherit;
   min-height: 42px;
+  padding: 11px 13px;
   transition: border-color .2s, box-shadow .2s;
+  width: 100%;
 }
 .login-panel input:focus { border-color: #059669; box-shadow: 0 0 0 3px rgba(5,150,105,.12); }
-.login-panel button { box-shadow: 0 8px 16px rgba(5,150,105,.16); min-height: 44px; }
+.login-panel > div.mb-6 { margin-bottom: 28px; }
+.login-panel button {
+  background: #059669;
+  border: 0;
+  border-radius: 9px;
+  box-shadow: 0 8px 16px rgba(5,150,105,.16);
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+  min-height: 46px;
+  transition: background .2s, transform .2s;
+}
+.login-panel button:hover { background: #047857; transform: translateY(-1px); }
 
 .admin-dashboard { background: #f5f8f6; }
 .admin-header { background: linear-gradient(110deg, #d1fae5, #a7f3d0); color: #064e3b; padding: 20px 32px; position: relative; }
