@@ -5,6 +5,7 @@ export default function Dashboard() {
     const navigate = useNavigate();
     const [revenueData, setRevenueData] = useState(null);
     const [segments, setSegments] = useState(null);
+    const [attendanceByCity, setAttendanceByCity] = useState([]);
     const [geographic, setGeographic] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -26,13 +27,14 @@ export default function Dashboard() {
             const headers = { Authorization: 'Bearer ' + token };
 
             try {
-                const [revRes, segRes, geoRes] = await Promise.all([
+                const [revRes, segRes, attendanceRes, geoRes] = await Promise.all([
                     fetch('http://localhost:5000/api/analytics/revenue', { headers }),
                     fetch('http://localhost:5000/api/analytics/segmentation', { headers }),
+                    fetch('http://localhost:5000/api/analytics/attendance-by-city', { headers }),
                     fetch('http://localhost:5000/api/analytics/geographic-insights', { headers })
                 ]);
 
-                if (revRes.status === 401 || segRes.status === 401 || geoRes.status === 401) {
+                if (revRes.status === 401 || segRes.status === 401 || attendanceRes.status === 401 || geoRes.status === 401) {
                     localStorage.clear();
                     navigate('/login');
                     return;
@@ -40,10 +42,12 @@ export default function Dashboard() {
 
                 const revJson = await revRes.json();
                 const segJson = await segRes.json();
+                const attendanceJson = await attendanceRes.json();
                 const geoJson = await geoRes.json();
 
                 if (revJson.success) setRevenueData(revJson);
                 if (segJson.success) setSegments(segJson);
+                if (attendanceJson.success) setAttendanceByCity(attendanceJson.data);
                 if (geoJson.success) setGeographic(geoJson.data);
 
                 setLoading(false);
@@ -58,6 +62,11 @@ export default function Dashboard() {
     }, [navigate]);
 
     if (loading) return <div className="flex h-screen items-center justify-center font-bold text-emerald-700">Loading Hadabima Analytics Engine...</div>;
+
+    const foodByVolume = [...geographic].sort(
+        (left, right) => (right.top_items?.[0]?.quantity || 0) - (left.top_items?.[0]?.quantity || 0)
+    );
+    const highestFoodVolume = foodByVolume[0]?.top_items?.[0]?.quantity || 1;
 
     return (
         <div className="min-h-screen bg-stone-50 text-stone-800">
@@ -111,29 +120,69 @@ export default function Dashboard() {
                         </div>
                     </div>
 
-                    {/* Regional Market Expansions */}
-                    <div className="rounded-lg bg-white p-6 shadow-sm">
-                        <h3 className="mb-4 text-lg font-bold text-stone-700">Provincial Cuisine Preferences</h3>
-                        <div className="overflow-x-auto">
-                            <table className="w-full text-left border-collapse text-sm">
-                                <thead>
-                                    <tr className="border-b-2 border-stone-100 text-stone-500">
-                                        <th className="pb-2">City</th>
-                                        <th className="pb-2">Favorite Food Item</th>
-                                        <th className="pb-2 text-right">Volume</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {geographic.map((geo, idx) => (
-                                        <tr key={idx} className="border-b border-stone-50 hover:bg-stone-50/50">
-                                            <td className="py-3 font-semibold text-stone-800">{geo.city}</td>
-                                            <td className="py-3 text-stone-600">{geo.top_items?.[0]?.product_name || 'N/A'}</td>
-                                            <td className="py-3 text-right font-bold text-emerald-700">{geo.top_items?.[0]?.quantity || 0} units</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                    {/* Attendance by city */}
+                    <div className="attendance-card rounded-lg bg-white p-6 shadow-sm">
+                        <div className="attendance-card-header">
+                            <div>
+                                <h3 className="text-lg font-bold text-stone-700">Attendance by City</h3>
+                                <p className="text-sm text-stone-500">Recorded visits, highest to lowest</p>
+                            </div>
+                            <span className="attendance-total">
+                                {attendanceByCity.reduce((total, city) => total + city.attendance_count, 0).toLocaleString()} visits
+                            </span>
                         </div>
+                        <div className="attendance-list" aria-label="Attendance by city descending">
+                            {attendanceByCity.length === 0 ? (
+                                <p className="text-sm text-stone-500">No attendance data available.</p>
+                            ) : attendanceByCity.map((city) => {
+                                const highestAttendance = attendanceByCity[0].attendance_count || 1;
+                                const barWidth = (city.attendance_count / highestAttendance) * 100;
+
+                                return (
+                                    <div className="attendance-row" key={city.city}>
+                                        <div className="attendance-row-label">
+                                            <span className="font-semibold text-stone-800">{city.city}</span>
+                                            <span className="font-bold text-emerald-700">{city.attendance_count.toLocaleString()}</span>
+                                        </div>
+                                        <div className="attendance-track">
+                                            <div className="attendance-bar" style={{ width: `${barWidth}%` }} />
+                                        </div>
+                                        <span className="attendance-visitors">{city.unique_customers.toLocaleString()} visitors</span>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </div>
+
+                {/* City food preferences */}
+                <div className="food-visualization-card mt-8 rounded-lg bg-white p-6 shadow-sm">
+                    <div className="attendance-card-header">
+                        <div>
+                            <h3 className="text-lg font-bold text-stone-700">Top Food Item by City</h3>
+                            <p className="text-sm text-stone-500">Most purchased item in each city, ranked by volume</p>
+                        </div>
+                    </div>
+                    <div className="food-list" aria-label="Top food item and volume by city">
+                        {geographic.length === 0 ? (
+                            <p className="text-sm text-stone-500">No food preference data available.</p>
+                        ) : foodByVolume.map((city) => {
+                            const topItem = city.top_items?.[0];
+                            const volume = topItem?.quantity || 0;
+
+                            return (
+                                <div className="food-row" key={city.city}>
+                                    <div className="food-row-label">
+                                        <span className="font-semibold text-stone-800">{city.city}</span>
+                                        <span className="text-stone-600">{topItem?.product_name || 'N/A'}</span>
+                                        <span className="font-bold text-amber-700">{volume.toLocaleString()} units</span>
+                                    </div>
+                                    <div className="food-track">
+                                        <div className="food-bar" style={{ width: `${(volume / highestFoodVolume) * 100}%` }} />
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
 

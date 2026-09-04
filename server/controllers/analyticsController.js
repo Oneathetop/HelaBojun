@@ -239,3 +239,32 @@ exports.getGeographicInsights = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
+
+// Get the number of recorded visits for each city, ordered from highest attendance to lowest
+exports.getAttendanceByCity = async (req, res) => {
+    try {
+        const attendance = await Customer.aggregate([
+            { $unwind: "$visits" },
+            {
+                $group: {
+                    _id: "$city",
+                    attendance_count: { $sum: 1 },
+                    unique_customers: { $addToSet: "$customer_id" }
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    city: "$_id",
+                    attendance_count: 1,
+                    unique_customers: { $size: "$unique_customers" }
+                }
+            },
+            { $sort: { attendance_count: -1, city: 1 } }
+        ]);
+
+        res.json({ success: true, data: attendance });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};

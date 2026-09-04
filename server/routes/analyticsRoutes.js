@@ -7,7 +7,8 @@ const {
     getCustomerSegmentation,
     getFrequentVisitorPreferences,
     getMostBoughtItemsOverall,
-    getGeographicInsights
+    getGeographicInsights,
+    getAttendanceByCity
 } = require('../controllers/analyticsController');
 
 // All backend data aggregations are secured behind administrative session tokens
@@ -19,5 +20,6 @@ router.get('/segmentation', getCustomerSegmentation);
 router.get('/frequent-preferences', getFrequentVisitorPreferences);
 router.get('/most-bought', getMostBoughtItemsOverall);
 router.get('/geographic-insights', getGeographicInsights);
+router.get('/attendance-by-city', getAttendanceByCity);
 
 module.exports = router;
