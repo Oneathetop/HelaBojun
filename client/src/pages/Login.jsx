@@ -33,7 +33,7 @@ export default function Login() {
             <div className="login-ambient login-ambient-one" />
             <div className="login-ambient login-ambient-two" />
             <form onSubmit={handleLogin} className="login-panel w-96 rounded-lg bg-white p-8 shadow-md border-t-4 border-emerald-600">
-                <h2 className="mb-2 text-2xl font-bold text-stone-800">Hadabima NoSQL Admin</h2>
+                <h2 className="mb-2 text-2xl font-bold text-stone-800">HelaBojun Admin Panel</h2>
                 <p className="mb-6 text-sm text-stone-500">Sign in to review database analytics & insights</p>
                 {error && <div className="login-error mb-4 text-sm text-red-600 bg-red-50 p-2 rounded">{error}</div>}
 
@@ -60,7 +60,7 @@ export default function Login() {
                 </div>
 
                 <button type="submit" className="w-full rounded bg-emerald-600 p-2.5 font-bold text-white transition hover:bg-emerald-700">
-                    Authenticate
+                    Login
                 </button>
             </form>
         </div>
