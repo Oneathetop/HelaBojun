@@ -86,11 +86,11 @@ export default function Dashboard() {
     const pieColors = ['#047857', '#059669', '#34d399', '#f59e0b', '#f97316', '#dc2626', '#7c3aed', '#2563eb'];
 
     return (
-        <div className="min-h-screen bg-stone-50 text-stone-800">
+        <div className="admin-dashboard min-h-screen bg-stone-50 text-stone-800">
             {/* Header */}
-            <header className="flex items-center justify-between bg-emerald-800 px-8 py-4 text-white shadow-md">
+            <header className="admin-header flex items-center justify-between bg-emerald-800 px-8 py-4 text-white shadow-md">
                 <div>
-                    <h1 className="text-xl font-bold">Hadabima NoSQL Management</h1>
+                    <h1 className="text-xl font-bold">HelaBojun Data Analytics</h1>
                     <p className="text-xs text-emerald-200">Logged in as {localStorage.getItem('hadaAdminName') || 'SysAdmin'}</p>
                 </div>
                 <button onClick={handleLogout} className="rounded bg-emerald-700 px-4 py-2 text-sm font-semibold hover:bg-emerald-600 transition">
@@ -99,27 +99,27 @@ export default function Dashboard() {
             </header>
 
             {/* Dashboard Content */}
-            <main className="mx-auto max-w-7xl p-8">
+            <main className="dashboard-content mx-auto max-w-7xl p-8">
                 {/* Stats Summary Cards */}
-                <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-                    <div className="rounded-lg bg-white p-6 shadow-sm border-l-4 border-emerald-500">
+                <div className="dashboard-kpis mb-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+                    <div className="dashboard-kpi rounded-lg bg-white p-6 shadow-sm border-l-4 border-emerald-500">
                         <h4 className="text-sm font-semibold uppercase text-stone-500">Gross Total Revenue</h4>
                         <p className="text-3xl font-extrabold text-stone-900 mt-2">LKR {revenueData?.total_revenue?.toLocaleString() || '0'}</p>
                     </div>
-                    <div className="rounded-lg bg-white p-6 shadow-sm border-l-4 border-amber-500">
+                    <div className="dashboard-kpi rounded-lg bg-white p-6 shadow-sm border-l-4 border-amber-500">
                         <h4 className="text-sm font-semibold uppercase text-stone-500">High-Frequency Cohort</h4>
                         <p className="text-3xl font-extrabold text-stone-900 mt-2">{segments?.high_frequency_count || 0} Customers</p>
                     </div>
-                    <div className="rounded-lg bg-white p-6 shadow-sm border-l-4 border-red-500">
+                    <div className="dashboard-kpi rounded-lg bg-white p-6 shadow-sm border-l-4 border-red-500">
                         <h4 className="text-sm font-semibold uppercase text-stone-500">Low-Frequency Cohort</h4>
                         <p className="text-3xl font-extrabold text-stone-900 mt-2">{segments?.low_frequency_count || 0} Customers</p>
                     </div>
                 </div>
 
                 {/* Main Visual Sections */}
-                <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                <div className="dashboard-grid grid grid-cols-1 gap-8 lg:grid-cols-2">
                     {/* Monthly Revenue Chart representation */}
-                    <div className="rounded-lg bg-white p-6 shadow-sm">
+                    <div className="dashboard-panel rounded-lg bg-white p-6 shadow-sm">
                         <h3 className="mb-4 text-lg font-bold text-stone-700">Monthly Revenue Distribution</h3>
                         <div className="space-y-4">
                             {revenueData?.monthly_breakdown?.map((month) => (
@@ -138,7 +138,7 @@ export default function Dashboard() {
                     </div>
 
                     {/* Attendance by city */}
-                    <div className="attendance-card rounded-lg bg-white p-6 shadow-sm">
+                    <div className="dashboard-panel attendance-card rounded-lg bg-white p-6 shadow-sm">
                         <div className="attendance-card-header">
                             <div>
                                 <h3 className="text-lg font-bold text-stone-700">Attendance by City</h3>
@@ -184,7 +184,7 @@ export default function Dashboard() {
                 </div>
 
                 {/* City food preferences */}
-                <div className="food-visualization-card mt-8 rounded-lg bg-white p-6 shadow-sm">
+                <div className="dashboard-panel food-visualization-card mt-8 rounded-lg bg-white p-6 shadow-sm">
                     <div className="attendance-card-header">
                         <div>
                             <h3 className="text-lg font-bold text-stone-700">Top Food Item by City</h3>
@@ -215,7 +215,7 @@ export default function Dashboard() {
                 </div>
 
                 {/* High frequency list for tracking */}
-                <div className="mt-8 rounded-lg bg-white p-6 shadow-sm">
+                <div className="dashboard-panel mt-8 rounded-lg bg-white p-6 shadow-sm">
                     <h3 className="mb-4 text-lg font-bold text-stone-700">
                         Frequent Customers ({'>='} 6 visits/month)
                     </h3>
