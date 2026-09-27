@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import CustomerManagement from '../components/CustomerManagement';
 
 function getAttendancePieGradient(attendanceByCity, colors, totalAttendance) {
     return attendanceByCity.reduce((segments, city, index) => {
@@ -20,6 +21,8 @@ export default function Dashboard() {
     const [geographic, setGeographic] = useState([]);
     const [frequentPreferences, setFrequentPreferences] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [refreshKey, setRefreshKey] = useState(0);
+    const [customerMode, setCustomerMode] = useState(null);
 
     const handleLogout = () => {
         localStorage.clear();
@@ -74,7 +77,7 @@ export default function Dashboard() {
         };
 
         fetchDashboardData();
-    }, [navigate]);
+    }, [navigate, refreshKey]);
 
     if (loading) return <div className="flex h-screen items-center justify-center font-bold text-emerald-700">Loading Hadabima Analytics Engine...</div>;
 
@@ -93,9 +96,15 @@ export default function Dashboard() {
                     <h1 className="text-xl font-bold">HelaBojun Data Analytics</h1>
                     <p className="text-xs text-emerald-200">Logged in as {localStorage.getItem('hadaAdminName') || 'SysAdmin'}</p>
                 </div>
-                <button onClick={handleLogout} className="rounded bg-emerald-700 px-4 py-2 text-sm font-semibold hover:bg-emerald-600 transition">
-                    Logout
-                </button>
+                <div className="admin-header-actions">
+                    <div className="customer-header-actions">
+                        <button className="admin-header-crud-button" onClick={() => setCustomerMode('view')}>View customers</button>
+                        <button className="admin-header-crud-button" onClick={() => setCustomerMode('add')}>Add customer</button>
+                        <button className="admin-header-crud-button" onClick={() => setCustomerMode('update')}>Update customer</button>
+                        <button className="admin-header-crud-button" onClick={() => setCustomerMode('delete')}>Delete customer</button>
+                    </div>
+                    <button onClick={handleLogout} className="rounded bg-emerald-700 px-4 py-2 text-sm font-semibold hover:bg-emerald-600 transition">Logout</button>
+                </div>
             </header>
 
             {/* Dashboard Content */}
@@ -249,6 +258,7 @@ export default function Dashboard() {
                     </div>
                 </div>
             </main>
+            {customerMode && <CustomerManagement mode={customerMode} onChanged={() => setRefreshKey((key) => key + 1)} onClose={() => setCustomerMode(null)} />}
         </div>
     );
 }
